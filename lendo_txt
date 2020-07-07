@@ -1,0 +1,10 @@
+import pandas as pd
+dict={}
+dados = open('/content/Entrada.txt', 'r').read().splitlines() 
+for linha in dados:
+    x, y, z = linha.split('|')
+    if x not in dict:
+        dict[y] = {x: z}
+df = pd.DataFrame(dict)
+tabela = df.fillna('----------').sort_index()
+#tabela.to_csv(r'/content/saída.txt', sep='|')
